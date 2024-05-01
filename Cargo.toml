@@ -29,24 +29,24 @@ epoll = ["fd"]
 
 [dependencies]
 # ArceOS modules
-axfeat = { path = "../axfeat" }
-axruntime = { path = "../../modules/axruntime" }
-axconfig = { path = "../../modules/axconfig" }
-axlog = { path = "../../modules/axlog" }
-axhal = { path = "../../modules/axhal" }
-axsync = { path = "../../modules/axsync" }
-axalloc = { path = "../../modules/axalloc", optional = true }
-axtask = { path = "../../modules/axtask", optional = true }
-axfs = { path = "../../modules/axfs", optional = true }
-axnet = { path = "../../modules/axnet", optional = true }
+axfeat = { git = "https://github.com/Starry-OS/axfeat.git" }
+axruntime = { git = "https://github.com/Starry-OS/axruntime.git" }
+axconfig = { git = "https://github.com/Starry-OS/axconfig.git" }
+axlog = { git = "https://github.com/Starry-OS/axlog.git" }
+axhal = { git = "https://github.com/Starry-OS/axhal.git" }
+axsync = { git = "https://github.com/Starry-OS/axsync.git" }
+axalloc = { git = "https://github.com/Starry-OS/axalloc.git", optional = true }
+axtask = { git = "https://github.com/Starry-OS/axtask.git", optional = true }
+axfs = { git = "https://github.com/Starry-OS/axfs.git", optional = true }
+axnet = { git = "https://github.com/Starry-OS/axnet.git", optional = true }
 
 # Other crates
-axio = { path = "../../crates/axio" }
-axerrno = { path = "../../crates/axerrno" }
+axio = { git = "https://github.com/Starry-OS/axio.git" }
+axerrno = { git = "https://github.com/Starry-OS/axerrno.git" }
 static_assertions = "1.1.0"
 spin = { version = "0.9" }
 lazy_static = { version = "1.4", features = ["spin_no_std"] }
-flatten_objects = { path = "../../crates/flatten_objects" }
+flatten_objects = { git = "https://github.com/Starry-OS/flatten_objects.git" }
 
 [build-dependencies]
 bindgen ={ version = "0.66" }
