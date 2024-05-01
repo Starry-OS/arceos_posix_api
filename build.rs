@@ -79,10 +79,11 @@ typedef struct {{
                 }
             }
         }
-
+        let libc_dir = std::env::var("AX_LIBC_DIR").unwrap();
+        println!("{}", format!("-I{}/include", libc_dir));
         let mut builder = bindgen::Builder::default()
             .header(in_file)
-            .clang_arg("-I./../../ulib/axlibc/include")
+            .clang_arg(format!("-I{}/include", libc_dir))
             .parse_callbacks(Box::new(MyCallbacks))
             .derive_default(true)
             .size_t_is_usize(false)
@@ -101,6 +102,13 @@ typedef struct {{
             .expect("Couldn't write bindings!");
     }
 
-    gen_pthread_mutex("../../ulib/axlibc/include/ax_pthread_mutex.h").unwrap();
+    gen_pthread_mutex(
+        format!(
+            "{}/include/ax_pthread_mutex.h",
+            std::env::var("AX_LIBC_DIR").unwrap()
+        )
+        .as_str(),
+    )
+    .unwrap();
     gen_c_to_rust_bindings("ctypes.h", "src/ctypes_gen.rs");
 }
