@@ -105,7 +105,7 @@ typedef struct {{
     gen_pthread_mutex(
         format!(
             "{}/include/ax_pthread_mutex.h",
-            std::env::var("AX_LIBC_DIR").unwrap()
+            option_env!("AX_LIBC_DIR").unwrap_or(".")
         )
         .as_str(),
     )
