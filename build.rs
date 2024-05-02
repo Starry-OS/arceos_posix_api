@@ -79,7 +79,7 @@ typedef struct {{
                 }
             }
         }
-        let libc_dir = std::env::var("AX_LIBC_DIR").unwrap();
+        let libc_dir = option_env!("AX_LIBC_DIR").unwrap_or(".");
         println!("{}", format!("-I{}/include", libc_dir));
         let mut builder = bindgen::Builder::default()
             .header(in_file)
