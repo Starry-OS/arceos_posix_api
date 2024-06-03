@@ -1052,7 +1052,7 @@ fn bindgen_test_layout_timespec() {
 #[repr(C)]
 #[derive(Debug, Default, Copy, Clone)]
 pub struct pthread_mutex_t {
-    pub __l: [::core::ffi::c_long; 1usize],
+    pub __l: [::core::ffi::c_long; 6usize],
 }
 #[test]
 fn bindgen_test_layout_pthread_mutex_t() {
@@ -1060,7 +1060,7 @@ fn bindgen_test_layout_pthread_mutex_t() {
     let ptr = UNINIT.as_ptr();
     assert_eq!(
         ::core::mem::size_of::<pthread_mutex_t>(),
-        8usize,
+        48usize,
         concat!("Size of: ", stringify!(pthread_mutex_t))
     );
     assert_eq!(

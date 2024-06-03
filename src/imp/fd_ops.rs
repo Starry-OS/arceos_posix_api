@@ -126,7 +126,7 @@ pub fn sys_dup3(old_fd: c_int, new_fd: c_int, flags: c_int) -> c_int {
             .ok_or(LinuxError::EMFILE)?;
 
         if (flags & (ctypes::O_CLOEXEC as c_int)) != 0 {
-            let res = sys_fcntl(new_fd, ctypes::F_SETFD as _, ctypes::FD_CLOEXEC as _);
+            let _ = sys_fcntl(new_fd, ctypes::F_SETFD as _, ctypes::FD_CLOEXEC as _);
         }
 
         Ok(new_fd)
