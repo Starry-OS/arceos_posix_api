@@ -1052,7 +1052,7 @@ fn bindgen_test_layout_timespec() {
 #[repr(C)]
 #[derive(Debug, Default, Copy, Clone)]
 pub struct pthread_mutex_t {
-    pub __l: [::core::ffi::c_long; 6usize],
+    pub __l: [::core::ffi::c_long; 2usize],
 }
 #[test]
 fn bindgen_test_layout_pthread_mutex_t() {
@@ -1285,7 +1285,7 @@ impl Default for epoll_data {
     }
 }
 pub type epoll_data_t = epoll_data;
-#[repr(C, packed)]
+#[repr(C)]
 #[derive(Copy, Clone)]
 pub struct epoll_event {
     pub events: u32,
@@ -1297,12 +1297,12 @@ fn bindgen_test_layout_epoll_event() {
     let ptr = UNINIT.as_ptr();
     assert_eq!(
         ::core::mem::size_of::<epoll_event>(),
-        12usize,
+        16usize,
         concat!("Size of: ", stringify!(epoll_event))
     );
     assert_eq!(
         ::core::mem::align_of::<epoll_event>(),
-        1usize,
+        8usize,
         concat!("Alignment of ", stringify!(epoll_event))
     );
     assert_eq!(
@@ -1317,7 +1317,7 @@ fn bindgen_test_layout_epoll_event() {
     );
     assert_eq!(
         unsafe { ::core::ptr::addr_of!((*ptr).data) as usize - ptr as usize },
-        4usize,
+        8usize,
         concat!(
             "Offset of field: ",
             stringify!(epoll_event),
